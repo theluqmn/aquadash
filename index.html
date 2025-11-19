@@ -3,6 +3,8 @@
     <head>
         <title>AquaDash</title>
 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
         <!-- IBM Plex Mono font -->
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet" />
 
@@ -33,20 +35,75 @@
                         <p id="tds" class="text-3xl text-black">352</p>
                     </div>
     
-                    <div class="cols-span-2 bg-[rgb(220,220,220)] p-4 flex flex-col font-bold rounded-lg shadow-md">
+                    <div class="bg-[rgb(220,220,220)] p-4 flex flex-col font-bold rounded-lg shadow-md">
                         <p class="text-xl text-[rgb(50,50,50)]">pH</p>
                         <p id="pH" class="text-3xl text-black">7.2</p>
                     </div>
 
-                    <div class="cols-span-2 bg-[rgb(220,220,220)] p-4 flex flex-col font-bold rounded-lg shadow-md">
+                    <div class="bg-[rgb(220,220,220)] p-4 flex flex-col font-bold rounded-lg shadow-md">
                         <p class="text-xl text-[rgb(50,50,50)]">Temperature</p>
                         <p id="temperature" class="text-3xl text-black">26.5 °C</p>
                     </div>
 
-                    <div class="cols-span-2 bg-[rgb(220,220,220)] p-4 flex flex-col font-bold rounded-lg shadow-md">
+                    <div class="bg-[rgb(220,220,220)] p-4 flex flex-col font-bold rounded-lg shadow-md">
                         <p class="text-xl text-[rgb(50,50,50)]">Uptime</p>
                         <p id="uptime" class="text-3xl text-black">1:32:5</p>
                     </div>
+                </div>
+
+                <div class="col-span-3 w-full h-full">
+                    <canvas id="myChart" class="block h-full w-full"></canvas>
+                    <script>
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ['17/11/2025', '18/11/2025', '19/11/2025', '20/11/2025'],
+                            datasets: [{
+                                label: 'TDS',
+                                data: [325, 154, 453, 512],
+                                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                borderColor: 'rgba(54, 162, 235, 1)',
+                                borderWidth: 1,
+                                yAxisID: 'yTDS'
+                            }, {
+                                label: 'pH',
+                                data: [7.2, 7.5, 7.3, 7.2],
+                                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                borderWidth: 1,
+                                yAxisID: 'yPH'
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yTDS: {
+                                    type: 'linear',
+                                    position: 'left',
+                                    beginAtZero: true,
+                                    title: {
+                                    display: true,
+                                    text: 'TDS Value'
+                                    }
+                                },
+                                yPH: {
+                                    type: 'linear',
+                                    position: 'right',
+                                    beginAtZero: false,
+                                    grid: {
+                                    drawOnChartArea: false // only want grid lines on one axis
+                                    },
+                                    title: {
+                                    display: true,
+                                    text: 'pH Value'
+                                    },
+                                    min: 0,
+                                    max: 14
+                                }
+                            }
+                        }
+                    });
+                    </script>
                 </div>
             </div>
         </main>
