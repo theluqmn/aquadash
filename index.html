@@ -2,6 +2,53 @@
 <html lang="en">
     <head>
         <title>AquaDash</title>
+
+        <!-- IBM Plex Mono font -->
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet" />
+
+        <!-- tailwind css -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: { fontFamily: { mono: ['"IBM Plex Mono"', 'monospace'] }}
+                }
+            }
+        </script>
     </head>
-    <body></body>
+
+    <body class="bg-[rgb(152,212,181)] font-mono w-full h-full">
+        <header class="sticky top-0 z-50 p-4 w-full bg-[rgb(8,112,113)] shadow-md">
+            <div class="flex flex-col md:w-7/12 mx-auto">
+                <p class="text-2xl text-white font-bold">AquaDash</p>
+                <p class="text-base text-[rgb(6,194,151)] font-bold">AQUAxGREENOVATORS</p>
+            </div>
+        </header>
+
+        <main class="p-4 w-full h-full md:w-7/12 mx-auto bg-white">
+            <div class="grid grid-cols grid-cols-4 gap-4">
+                <div class="flex flex-col gap-4">
+                    <div class="bg-[rgb(220,220,220)] p-4 flex flex-col font-bold rounded-lg shadow-md">
+                        <p class="text-xl text-[rgb(50,50,50)]">TDS sensor</p>
+                        <p id="tds" class="text-3xl text-black">352</p>
+                    </div>
+    
+                    <div class="cols-span-2 bg-[rgb(220,220,220)] p-4 flex flex-col font-bold rounded-lg shadow-md">
+                        <p class="text-xl text-[rgb(50,50,50)]">pH</p>
+                        <p id="pH" class="text-3xl text-black">7.2</p>
+                    </div>
+
+                    <div class="cols-span-2 bg-[rgb(220,220,220)] p-4 flex flex-col font-bold rounded-lg shadow-md">
+                        <p class="text-xl text-[rgb(50,50,50)]">Temperature</p>
+                        <p id="temperature" class="text-3xl text-black">26.5 °C</p>
+                    </div>
+
+                    <div class="cols-span-2 bg-[rgb(220,220,220)] p-4 flex flex-col font-bold rounded-lg shadow-md">
+                        <p class="text-xl text-[rgb(50,50,50)]">Uptime</p>
+                        <p id="uptime" class="text-3xl text-black">1:32:5</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
 </html>
